@@ -78,15 +78,17 @@ public class JPanelCompletarDatos extends JPanel
 		
 		
 		j = 0;
+		gbc.gridy = i;
 		gbc.gridwidth = 1;
 		gbc.weightx = 0.0;
 		gbc.fill = GridBagConstraints.EAST;
-		gbc.insets = new Insets(5, 5, 5, 5);
+		gbc.insets = new Insets(10, 5, 10, 5);
 		for (JButton b : botones)
 		{
 			gbc.gridx = 5 - j;
-			gbc.gridy = i;
 			this.add(b, gbc);
+			
+			j++;
 		}		
 	}
 	

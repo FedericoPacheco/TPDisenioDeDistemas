@@ -33,7 +33,7 @@ import utilidades.ConstantesTipoDocumento;
 import utilidades.DateLabelFormatter;
 
 @SuppressWarnings("serial")
-public class AltaPasajero extends JPanel
+public class DarDeAltaPasajero extends JPanel
 {
 	private JFrame ventana;
 	private JPanel panelPadre;
@@ -84,7 +84,7 @@ public class AltaPasajero extends JPanel
 	private static final String IVA_STR = "Posición frente a IVA (*)";
 	private static final String OCUPACION_STR = "Ocupación (*)";
 	
-	public AltaPasajero(JFrame ventana, JPanel panelPadre)
+	public DarDeAltaPasajero(JFrame ventana, JPanel panelPadre)
 	{
 		this.ventana = ventana;
 		this.panelPadre = panelPadre;
