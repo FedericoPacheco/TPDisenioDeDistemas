@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -35,11 +36,13 @@ import utilidades.DateLabelFormatter;
 public class AltaPasajero extends JPanel
 {
 	private JFrame ventana;
+	private JPanel panelPadre;
 	private GridBagConstraints gbc;
-	private JPanelAgregarDatos datosBasicos;
-	private JPanelAgregarDatos direccion;
-	private JPanelAgregarDatos otrosDatos;
+	private JPanelCompletarDatos datosBasicos;
+	private JPanelCompletarDatos direccion;
+	private JPanelCompletarDatos otrosDatos;
 	
+	private JLabel lDireccion;
 	private JTextField tfNombre;
 	private JTextField tfApellido;
 	private JComboBox<String> cbTipoDoc;
@@ -84,21 +87,22 @@ public class AltaPasajero extends JPanel
 	public AltaPasajero(JFrame ventana, JPanel panelPadre)
 	{
 		this.ventana = ventana;
+		this.panelPadre = panelPadre;
 		ventana.setTitle("Dar de alta pasajero");
 		
 		// https://stackoverflow.com/questions/31708163/numberformat-text-field-without-commas
 		formatoNumeros = NumberFormat.getNumberInstance();
 		formatoNumeros.setGroupingUsed(false);
 		
-		datosBasicos = new JPanelAgregarDatos();
+		datosBasicos = new JPanelCompletarDatos();
 		this.datosBasicos();
 		datosBasicos.armar();
 		
-		direccion = new JPanelAgregarDatos();
+		direccion = new JPanelCompletarDatos();
 		this.direccion();
 		direccion.armar();
 		
-		otrosDatos = new JPanelAgregarDatos();
+		otrosDatos = new JPanelCompletarDatos();
 		this.otrosDatos();
 		otrosDatos.armar();
 		
@@ -126,7 +130,9 @@ public class AltaPasajero extends JPanel
 		gbc.weightx = 0.0;
 		gbc.fill = GridBagConstraints.WEST;
 		gbc.insets = new Insets(10, 20, 0, 20);
-		this.add(new JLabel("Dirección"), gbc);
+		lDireccion = new JLabel("Dirección");
+		lDireccion.setFont(new Font(lDireccion.getFont().toString(), Font.BOLD, 14));
+		this.add(lDireccion, gbc);
 		
 		gbc.gridx = 0;
 		gbc.gridy = 2;
