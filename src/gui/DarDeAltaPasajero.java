@@ -407,7 +407,7 @@ public class DarDeAltaPasajero extends JPanel
 				"Complete todos los campos marcados como obligatorios (*).", 
 				"Error", 
 				JOptionPane.DEFAULT_OPTION, 
-				JOptionPane.ERROR_MESSAGE, 
+				JOptionPane.INFORMATION_MESSAGE, 
 				null, 
 				opciones,
 				opciones[0]
