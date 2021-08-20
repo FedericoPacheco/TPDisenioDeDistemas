@@ -30,6 +30,7 @@ public class JPanelTablaConBotones extends JPanel
 	private int techoExclusivo;
 	private int pagActual;
 	private int pagsTotales;
+	private JLabel lPag;
 	private List<JButton> botonesAdicionales;
 	
 	public JPanelTablaConBotones()
@@ -61,6 +62,17 @@ public class JPanelTablaConBotones extends JPanel
 		this.add(new JScrollPane(tbl), gbc);
 		
 
+		gbc.gridx = mt.getAllColumnas().size() / 2 + 1;
+		gbc.gridy = 1;
+		gbc.gridwidth = 1;
+		gbc.weightx = 0.0;
+		gbc.insets = new Insets(10, 0, 10, 0);
+		pagActual = pisoInclusivo / MAX_FILAS + 1;
+		pagsTotales = datos.length / MAX_FILAS + ((datos.length % MAX_FILAS == 0)? 0 : 1);
+		lPag = new JLabel("Pág. " + pagActual  + " / " + pagsTotales);
+		this.add(lPag, gbc);
+		
+		
 		gbc.gridx = mt.getAllColumnas().size() / 2;
 		gbc.gridy = 1;
 		gbc.gridwidth = 1;
@@ -69,6 +81,9 @@ public class JPanelTablaConBotones extends JPanel
 		this.add(bAtras, gbc);
 		bAtras.addActionListener(e ->
 		{
+			pagActual--;
+			lPag.setText("Pág. " + pagActual  + " / " + pagsTotales);
+			
 			if (pisoInclusivo + MAX_FILAS >= datos.length)
 				techoExclusivo -= datos.length - pisoInclusivo;
 			else
@@ -87,16 +102,6 @@ public class JPanelTablaConBotones extends JPanel
 		});
 		
 		
-		gbc.gridx = mt.getAllColumnas().size() / 2 + 1;
-		gbc.gridy = 1;
-		gbc.gridwidth = 1;
-		gbc.weightx = 0.0;
-		gbc.insets = new Insets(10, 0, 10, 0);
-		pagActual = pisoInclusivo / MAX_FILAS + 1;
-		pagsTotales = datos.length / MAX_FILAS + ((datos.length % MAX_FILAS == 0)? 0 : 1);
-		this.add(new JLabel("Pág. " + pagActual  + " / " + pagsTotales), gbc);
-		
-		
 		gbc.gridx = mt.getAllColumnas().size() / 2 + 2;
 		gbc.gridy = 1;
 		gbc.gridwidth = 1;
@@ -105,6 +110,9 @@ public class JPanelTablaConBotones extends JPanel
 		this.add(bAdelante, gbc);
 		bAdelante.addActionListener(e ->
 		{
+			pagActual++;
+			lPag.setText("Pág. " + pagActual  + " / " + pagsTotales);
+			
 			pisoInclusivo += MAX_FILAS;
 			bAtras.setEnabled(true);
 			if (pisoInclusivo + MAX_FILAS >= datos.length)
